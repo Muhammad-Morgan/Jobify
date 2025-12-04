@@ -63,12 +63,14 @@ export async function getAllJobsAction({
         OR: [
           {
             position: {
-              contains: search.toLowerCase(),
+              contains: search,
+              mode: "insensitive",
             },
           },
           {
             company: {
-              contains: search.toLowerCase(),
+              contains: search,
+              mode: "insensitive",
             },
           },
         ],
@@ -210,8 +212,6 @@ export async function getChartsAction(): Promise<
       const date = dayjs(job.createdAt).format("MMM YY");
 
       const existingEntry = acc.find((entry) => entry.date === date);
-      console.log(existingEntry);
-
       if (existingEntry) {
         existingEntry.count += 1;
       } else {
