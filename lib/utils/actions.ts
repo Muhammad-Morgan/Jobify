@@ -63,12 +63,12 @@ export async function getAllJobsAction({
         OR: [
           {
             position: {
-              contains: search,
+              contains: search.toLowerCase(),
             },
           },
           {
             company: {
-              contains: search,
+              contains: search.toLowerCase(),
             },
           },
         ],
